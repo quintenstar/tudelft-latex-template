@@ -227,21 +227,39 @@
                {\endlist}
 
 %% Define the TU Delft house style colors.
+% source: https://www.tudelft.nl/huisstijl/kleuren
+
+% Primary colors
 \definecolor{tudelft-cyan}{cmyk}{1,0,0,0}
 \definecolor{tudelft-black}{cmyk}{0,0,0,1}
 \definecolor{tudelft-white}{cmyk}{0,0,0,0}
-\definecolor{tudelft-sea-green}{cmyk}{0.54,0,0.32,0}
-\definecolor{tudelft-green}{cmyk}{1,0.15,0.4,0}
-\definecolor{tudelft-dark-blue}{cmyk}{1,0.66,0,0.4}
-\definecolor{tudelft-purple}{cmyk}{0.98,1,0,0.35}
-\definecolor{tudelft-turquoise}{cmyk}{0.82,0,0.21,0.08}
-\definecolor{tudelft-sky-blue}{cmyk}{0.45,0,0.06,0.06}
-\definecolor{tudelft-lavendel}{cmyk}{0.45,0.2,0,0.07}
-\definecolor{tudelft-orange}{cmyk}{0.02,0.56,0.84,0}
-\definecolor{tudelft-warm-purple}{cmyk}{0.58,1,0,0.02}
-\definecolor{tudelft-fuchsia}{cmyk}{0.19,1,0,0.19}
-\definecolor{tudelft-bright-green}{cmyk}{0.36,0,1,0}
-\definecolor{tudelft-yellow}{cmyk}{0.02,0,0.54,0}
+
+% Secundary / accent colors
+\definecolor{tudelft-dark-blue}{cmyk}{1,0.52,0.06,0}
+\definecolor{tudelft-sea-green}{cmyk}{0.88,0.04,0.58,0}
+\definecolor{tudelft-turquoise}{cmyk}{0.96,0.08,0.26,0.36}
+\definecolor{tudelft-light-turquoise}{cmyk}{0.48,0,0.3,0}
+\definecolor{tudelft-gray-cyan}{cmyk}{0.6,0.24,0.28,0}
+\definecolor{tudelft-sky-blue}{cmyk}{0.72,0,0.24,0}
+\definecolor{tudelft-green}{cmyk}{0.38,0,0.62,0}
+\definecolor{tudelft-yellow}{cmyk}{0.05,0.26,0.84,0}
+\definecolor{tudelft-red}{cmyk}{0.16,0.92,0.84,0}
+\definecolor{tudelft-orange}{cmyk}{0,0.66,0.74,0}
+
+
+
+% \definecolor{tudelft-sea-green}{cmyk}{0.54,0,0.32,0}
+% \definecolor{tudelft-green}{cmyk}{1,0.15,0.4,0}
+% \definecolor{tudelft-dark-blue}{cmyk}{1,0.66,0,0.4}
+% \definecolor{tudelft-purple}{cmyk}{0.98,1,0,0.35}
+% \definecolor{tudelft-turquoise}{cmyk}{0.82,0,0.21,0.08}
+% \definecolor{tudelft-sky-blue}{cmyk}{0.45,0,0.06,0.06}
+% \definecolor{tudelft-lavendel}{cmyk}{0.45,0.2,0,0.07}
+% \definecolor{tudelft-orange}{cmyk}{0.02,0.56,0.84,0}
+% \definecolor{tudelft-warm-purple}{cmyk}{0.58,1,0,0.02}
+% \definecolor{tudelft-fuchsia}{cmyk}{0.19,1,0,0.19}
+% \definecolor{tudelft-bright-green}{cmyk}{0.36,0,1,0}
+% \definecolor{tudelft-yellow}{cmyk}{0.02,0,0.54,0}
 
 \def\@pagecolor{tudelft-cyan}
 %\if@whitetitle
