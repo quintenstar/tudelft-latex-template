@@ -34,6 +34,8 @@
     %% the title page.
     \RequirePackage[dutch,english]{babel}
 \fi
+\RequirePackage{csquotes} % Recommended with babel
+
 \RequirePackage[nooneline,footnotesize]{caption}
 \RequirePackage{fancyhdr}
 \RequirePackage[flushmargin,hang]{footmisc}
