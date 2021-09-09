@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{tudelft-report}[2013/06/22 v1.0 TU Delft thesis class]
+\ProvidesClass{tudelft-report}[2021/09/10 v1.0 opionated and enhanced TU Delft thesis class]
 
 \newif\if@dutch
 \newif\if@english
