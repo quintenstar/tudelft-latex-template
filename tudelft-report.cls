@@ -37,12 +37,36 @@
 \RequirePackage[nooneline,footnotesize]{caption}
 \RequirePackage{fancyhdr}
 \RequirePackage[flushmargin,hang]{footmisc}
-\RequirePackage{ifpdf}
-\RequirePackage{ifxetex}
+
+% LuaLaTeX fix
+\RequirePackage{iftex}
+\newif\ifxetexorluatex
 \ifxetex
-    \RequirePackage[xetex]{geometry}
-    \RequirePackage[xetex]{graphicx}
-    \RequirePackage[xetex]{hyperref}
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+%% legacy packages --> caused problems
+% \RequirePackage{ifpdf}
+% \RequirePackage{ifxetex}
+\ifxetexorluatex
+    \ifxetex
+        \RequirePackage[xetex]{geometry}
+        \RequirePackage[xetex]{graphicx}
+        \RequirePackage[xetex]{hyperref}
+    \fi
+
+    \ifluatex
+        \RequirePackage[luatex]{geometry}
+        \RequirePackage[luatex]{graphicx}
+        \RequirePackage[luatex]{hyperref}
+    \fi
+
     \RequirePackage{fontspec}
     \RequirePackage{xltxtra}
     \defaultfontfeatures{Ligatures=TeX}
@@ -57,6 +81,7 @@
         \RequirePackage[hypertex]{hyperref}
     \fi
 \fi
+
 \RequirePackage{metalogo}
 \RequirePackage{tikz}
 \RequirePackage[noindentafter]{titlesec}
@@ -66,7 +91,7 @@
 \RequirePackage[export]{adjustbox}
 \def\@largetitlesize{96pt}
 
-\ifxetex
+\ifxetexorluatex
     %% If the document is compiled with XeLaTeX, we load the TU Delft house
     %% style fonts: Bookman Old Style (serif) for titles and Arial (sans-serif)
     %% for text. Even if the nativefonts option was specified, we need these
