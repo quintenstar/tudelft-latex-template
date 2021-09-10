@@ -1,9 +1,8 @@
+% !TeX program = lualatex
 \documentclass[]{tudelft-report}
 
 %\usepackage{biblatex}
-
 \usepackage[backend=biber, style=citations/aiaa]{biblatex}
-%natbib=true, giveninits=true,
 \addbibresource{report.bib}
 
 \makenomenclature{} % chktex 1
@@ -63,8 +62,10 @@
 
 \tableofcontents
 
-% table of figures, tables, algorithms, etc.
-% nomenclature, abbreviations, symbols
+\listoffigures
+\listoftables
+\printnomenclature
+
 
 %% Use Arabic numerals for the page numbers of the chapters.
 \mainmatter{}
@@ -85,4 +86,3 @@
 \printbibliography{}
 
 \end{document}
-

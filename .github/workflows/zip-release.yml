@@ -1,5 +1,10 @@
 name: Release
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +26,6 @@ jobs:
       - name: Create prerelease
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "tudelft-report.zip"
+          artifacts: "tudelft-report.zip,report.pdf"
           prerelease: true
           token: ${{ secrets.GITHUB_TOKEN }}
