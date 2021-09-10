@@ -1,0 +1,174 @@
+{
+  "latex-workshop.showContextMenu": true, // right click menu
+  "latex-workshop.intellisense.package.enabled": true, // automatically completes the command or package according to the loaded package
+  "latex-workshop.latex.autoBuild.run": "onSave", // disable automatic build when saving files
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "PDFlatex",
+      "tools": ["pdflatex"]
+    },
+    {
+      "name": "pdflatex -> bibtex -> makeindex ->  pdflatex*2",
+      "tools": ["pdflatex", "bibtex", "makeindex", "pdflatex", "pdflatex"]
+    },
+    {
+      "name": "lualatex",
+      "tools": ["lualatex"]
+    },
+    {
+      "name": "lualatex -> biber -> makeindex -> lualatex*2",
+      "tools": ["lualatex", "biber", "makeindex", "lualatex", "lualatex"]
+    },
+    {
+      "name": "xelatex",
+      "tools": ["xelatex"]
+    },
+    {
+      "name": "xelatex -> biber -> makeindex -> xelatex*2",
+      "tools": ["xelatex", "biber", "makeindex", "xelatex", "xelatex"]
+    },
+    {
+      "name": "makeindex",
+      "tools": ["makeindex"]
+    },
+    {
+      "name": "Biber",
+      "tools": ["biber"]
+    },
+    {
+      "name": "Bibtex",
+      "tools": ["bibtex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-recorder",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "lualatex",
+      "command": "lualatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-recorder",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": ["-include-directory=.aux", "%OUTDIR%/.aux/%DOCFILE%"]
+    },
+
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": ["%DOCFILE%"],
+      "env": {}
+    },
+
+    {
+      "name": "makeindex",
+      "command": "makeindex",
+      "args": ["%DOCFILE%.nlo", "-s", "nomencl.ist", "-o", "%DOCFILE%.nls"]
+    }
+  ],
+  "latex-workshop.latex.clean.fileTypes": [
+    "**/*.acn",
+    "**/*.acr",
+    "**/*.alg",
+    "**/*.aux",
+    "**/*.bbl",
+    "**/*.blg",
+    "**/*.fdb_latexmk",
+    "**/*.fls",
+    "**/*.glg",
+    "**/*.glo",
+    "**/*.gls",
+    "**/*.idx",
+    "**/*.ind",
+    "**/*.lof",
+    "**/*.log",
+    "**/*.lot",
+    "**/*.nav",
+    "**/*.out",
+    "**/*.run.xml",
+    "**/*.snm",
+    "**/*.synctex(busy)",
+    "**/*.synctex.gz",
+    "**/*.synctex.gz(busy)",
+    "**/*.toc"
+  ],
+  "files.exclude": {
+    "**/*.acn": true,
+    "**/*.acr": true,
+    "**/*.alg": true,
+    "**/*.aux": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    "**/*.glg": true,
+    "**/*.glo": true,
+    "**/*.gls": true,
+    "**/*.idx": true,
+    "**/*.ind": true,
+    "**/*.lof": true,
+    "**/*.lot": true,
+    "**/*.nav": true,
+    "**/*.out": true,
+    "**/*.run.xml": true,
+    "**/*.snm": true,
+    "**/*.synctex(busy)": true,
+    "**/*.synctex.gz": true,
+    "**/*.synctex.gz(busy)": true,
+    "**/*.toc": true,
+    "**/*.ilg": true,
+    "**/*.loc": true,
+    "**/*.bcf": true,
+    "**/*.nlo": true,
+    "**/*.nls": true,
+    "**/*.soc": true
+  }
+}
