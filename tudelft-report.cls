@@ -25,6 +25,7 @@
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+
 %% English is the default language, but this can be changed to Dutch by
 %% specifying the 'dutch' option to the document class.
 \if@dutch
@@ -70,7 +71,7 @@
     \fi
 
     \RequirePackage{fontspec}
-    \RequirePackage{xltxtra}
+    % \RequirePackage{xltxtra} obsolete fontspec is enough
     \defaultfontfeatures{Ligatures=TeX}
 \else
     \ifpdf
@@ -84,6 +85,13 @@
     \fi
 \fi
 
+
+% microtype
+\ifxetex  % chktex 1
+\else % Only use with LuaLaTeX or PdfLaTeX
+   \RequirePackage[babel=true]{microtype}
+\fi
+
 \RequirePackage{metalogo}
 \RequirePackage{tikz}
 \RequirePackage[noindentafter]{titlesec}
@@ -93,6 +101,22 @@
 \RequirePackage[export]{adjustbox}
 \def\@largetitlesize{96pt}
 
+\RequirePackage{changes}
+
+
+% Add nomenclature
+\RequirePackage{nomencl}
+\RequirePackage{float}
+
+\RequirePackage{siunitx}
+\RequirePackage{cleveref}
+\RequirePackage{url}
+
+\RequirePackage{booktabs}
+
+\RequirePackage[ruled]{algorithm2e}
+
+%% Font loading
 \ifxetexorluatex
     %% If the document is compiled with XeLaTeX, we load the TU Delft house
     %% style fonts: Bookman Old Style (serif) for titles and Arial (sans-serif)
@@ -126,7 +150,7 @@
     %% The native font is Utopia Regular with Fourier math. We use Latin Modern
     %% as a fallback, since Utopia lacks support for sans-serif and monospace.
     \RequirePackage[T1]{fontenc}
-    \RequirePackage[utf8]{inputenc}
+%   \RequirePackage[utf8]{inputenc} No longer required with modern LaTeX
 %    \RequirePackage{lmodern}
     \if@roman
 %      \RequirePackage{lato}
@@ -249,7 +273,7 @@
 \definecolor{tudelft-orange}{cmyk}{0,0.66,0.74,0}
 
 
-
+%% Old defined tu colors
 % \definecolor{tudelft-sea-green}{cmyk}{0.54,0,0.32,0}
 % \definecolor{tudelft-green}{cmyk}{1,0.15,0.4,0}
 % \definecolor{tudelft-dark-blue}{cmyk}{1,0.66,0,0.4}
