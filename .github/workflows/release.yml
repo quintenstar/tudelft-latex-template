@@ -1,0 +1,30 @@
+name: Zip Files
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  zip-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: papeloto/action-zip@v1
+        with:
+          files: >
+            appendices/
+            chapters/
+            cover/
+            figures/ 
+            fonts/ 
+            cover_half.jpg 
+            cover.jpg 
+            cover.pdf 
+            cover.tex 
+            report.bib. 
+            report.pdf 
+            report.tex 
+            roboto.sty 
+            title.tex 
+            tudelft-report.cls
+          dest: tudelft-report.zip
