@@ -2,12 +2,24 @@
 \ProvidesPackage{roboto}
     [2015/04/16 (Bob Tennent)  Supports Roboto fonts for all LaTeX engines.]
 
-\RequirePackage{ifxetex,ifluatex,xkeyval,textcomp}
+\RequirePackage{xkeyval,textcomp}
+
+
+% LuaLaTeX fix
+\RequirePackage{iftex}
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
 
 \newif\ifroboto@otf 
-\ifxetex
-  \roboto@otftrue
-\else\ifluatex
+\ifxetexorluatextrue
   \roboto@otftrue
 \else  % [pdf]LaTeX
   \roboto@otffalse
