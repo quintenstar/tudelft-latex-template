@@ -11,13 +11,13 @@ jobs:
           type: "zip"
           filename: "tudelft-report.zip"
           exclusions: >
-            "*.git*
-            .vscode/
-            design/
+            *.git/*
+            *.github/*
+            .vscode/*
+            /*design/*
             .gitignore
             LICENSE
             README.md
-              "
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "tudelft-report.zip"
