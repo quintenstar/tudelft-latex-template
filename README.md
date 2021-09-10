@@ -1,11 +1,19 @@
-# TU Delft LaTex template
+<div align='center'>
 
-![GitHub release (latest by date)](https://img.shields.io/github/downloads/quintenstar/tudelft-latex-template/latest/total)
-![GitHub](https://img.shields.io/github/license/quintenstar/tudelft-latex-template)
+![TU Delft LaTeX template](design/GitHub_repo_card.png)
 
-An opinionated enhanced version of the TU Delft report LaTeX template. Based on the Overleaf TU Delft template.
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/quintenstar/tudelft-latex-template?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/quintenstar/tudelft-latex-template?style=for-the-badge)
+
+An opinionated enhanced version of the TU Delft report LaTeX template.
+
+</div>
 
 ## Description
+
+- Fix any potential bugs.
+- Make the template more customizable and covient to use, while staying true to the style guide.
+- Promote best practices in LaTeX typesetting.
 
 ## Installation
 
@@ -30,8 +38,10 @@ Recent versions of Debian, and derived distributions such as Ubuntu, use the TeX
 Live system. Install the following packages to make full use of this
 template:
 
+```console
 texlive, texlive-fonts-extra, texlive-math-extra, texlive-lang-dutch,
 texlive-lang-english, texlive-latex-extra, texlive-xetex
+```
 
 ## Usage
 
@@ -49,12 +59,12 @@ xelatex report
 xelatex report
 ```
 
-This is equivalent to selecting 'XeLaTeX+BibTeX' or similar in your favorite TeX
+This is equivalent to selecting `XeLaTeX+BibTeX` or similar in your favorite TeX
 editing program.
 
 A sample document, as well as documentation for template options, can be found
 in example.pdf. An example with the native LaTeX fonts, compiled using the
-'nativefonts' option (or with pdflatex), can be found in
+`nativefonts` option (or with pdflatex), can be found in
 example-nativefonts.pdf.
 
 A separate example document is available which generates a cover image (front,
@@ -65,21 +75,26 @@ xelatex cover
 xelatex cover
 ```
 
-Or simply with the 'XeLaTeX' option in TeXworks or an equivalent program.
+Or simply with the `XeLaTeX` option in TeXworks or an equivalent program.
 
 ## Changelog
 
 ### Version 1.0
 
-- Fix small bugs
-- Compiles with LuaLaTeX
-- Updated colors to match the current [TU Delft style guide](https://www.tudelft.nl/huisstijl/kleuren)
-- Added additional (recommended) packages in the class file
-- Improved folder layout
+- Fixed a few small bugs and removed obsolete packages.
+- Added the option to compile with LuaLaTeX.
+- Changed the colors to match the current [TU Delft style guide](https://www.tudelft.nl/huisstijl/kleuren).
+- Added Affinity palette files.
+- Added additional (recommended) packages in the class file.
+- Added the AIAA citation style for Aerospace students.
+- Added a GitHub social repo card (and template) to the project.
+- Changed the folder/project layout.
 
 ## Attribution
 
 Based on the [Overleaf TU Delft LaTeX template by K.P. Hart](https://www.overleaf.com/latex/templates/tud-report/qrntwbrqpckw) released under the Creative Commons CC BY 4.0 license.
+
+Based on the [TU Delft style guide](https://www.tudelft.nl/huisstijl).
 
 ## License
 
