@@ -2,8 +2,8 @@
 
 ![TU Delft LaTeX template](GitHub_repo_card.png)
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/quintenstar/tudelft-latex-template?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/quintenstar/tudelft-latex-template?label=license&style=for-the-badge)
+[![Latest Release][latest-release-shield]][latest-release-url]
+[![License][license-shield]][license-url]
 
 An opinionated enhanced version of the TU Delft report LaTeX template.
 
@@ -112,3 +112,10 @@ Based on the [TU Delft style guide](https://www.tudelft.nl/huisstijl).
 ## License
 
 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[latest-release-shield]: https://img.shields.io/github/v/release/quintenstar/tudelft-latex-template?style=for-the-badge
+[latest-release-url]: https://github.com/quintenstar/tudelft-latex-template/releases
+[license-shield]: https://img.shields.io/github/license/quintenstar/tudelft-latex-template?label=license&style=for-the-badge
+[license-url]: https://github.com/quintenstar/tudelft-latex-template/blob/main/LICENSE
