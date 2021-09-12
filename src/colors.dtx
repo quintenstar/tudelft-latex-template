@@ -1,0 +1,34 @@
+%% Define the TU Delft house style colors.
+% source: https://www.tudelft.nl/huisstijl/kleuren
+
+% Primary colors
+\definecolor{tudelft-cyan}{cmyk}{1,0,0,0}
+\definecolor{tudelft-black}{cmyk}{0,0,0,1}
+\definecolor{tudelft-white}{cmyk}{0,0,0,0}
+
+% Secundary / accent colors
+\definecolor{tudelft-dark-blue}{cmyk}{1,0.52,0.06,0}
+\definecolor{tudelft-sea-green}{cmyk}{0.88,0.04,0.58,0}
+\definecolor{tudelft-turquoise}{cmyk}{0.96,0.08,0.26,0.36}
+\definecolor{tudelft-light-turquoise}{cmyk}{0.48,0,0.3,0}
+\definecolor{tudelft-gray-cyan}{cmyk}{0.6,0.24,0.28,0}
+\definecolor{tudelft-sky-blue}{cmyk}{0.72,0,0.24,0}
+\definecolor{tudelft-green}{cmyk}{0.38,0,0.62,0}
+\definecolor{tudelft-yellow}{cmyk}{0.05,0.26,0.84,0}
+\definecolor{tudelft-red}{cmyk}{0.16,0.92,0.84,0}
+\definecolor{tudelft-orange}{cmyk}{0,0.66,0.74,0}
+
+\def\@pagecolor{tudelft-cyan}
+%\if@whitetitle
+%  \def\titlecolor{tudelft-white}
+%\else   
+%  \def\titlecolor{tudelft-black}
+%\fi
+
+%% Use TU Delft cyan as the color for titles, unless the 'print' option is
+%% specified. % JMT changed this: all titles black!
+% \if@print
+\colorlet{title}{black}
+%\else
+%    \colorlet{title}{tudelft-cyan}
+%\fi

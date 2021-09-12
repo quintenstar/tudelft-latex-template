@@ -1,0 +1,135 @@
+%% Font loading
+\iftutex
+    %% If the document is compiled with XeLaTeX, we load the TU Delft house
+    %% style fonts: Bookman Old Style (serif) for titles and Arial (sans-serif)
+    %% for text. Even if the nativefonts option was specified, we need these
+    %% fonts for the cover.
+    \newfontfamily\tudtitlefamily[
+        Path = fonts/,
+        Extension = .ttf%,
+    ]{TUDelft-UltraLight}
+    \newfontfamily\tudrmfamily[
+        Path = fonts/,
+        Extension = .ttf,
+        BoldFont = *_Bold,
+        ItalicFont = *_Italic,
+        BoldItalicFont = *_Bold_Italic]{Georgia}
+    \newfontfamily\tudsffamily[
+        Path = fonts/,
+        Extension = .ttf,
+        BoldFont = *_Bold,
+        ItalicFont = *_Italic,
+        BoldItalicFont = *_Bold_Italic]{Arial}
+\else
+    \@nativefontstrue
+    %    \newfontfamily\tudtitlefamily{roboto-thin}
+    \newcommand*\tudrmfamily{\rmfamily}
+    \newcommand*\tudsffamily{\sffamily}
+\fi
+
+
+\if@nativefonts
+    %% The native font is Utopia Regular with Fourier math. We use Latin Modern
+    %% as a fallback, since Utopia lacks support for sans-serif and monospace.
+    \RequirePackage[T1]{fontenc}
+    %   \RequirePackage[utf8]{inputenc} No longer required with modern LaTeX
+    %    \RequirePackage{lmodern}
+    \if@roman
+        %      \RequirePackage{lato}
+        %      \RequirePackage{helvet}
+        \RequirePackage[thin]{roboto}
+        \RequirePackage{fourier}
+    \else
+        \RequirePackage[thin]{roboto}
+        %      \RequirePackage[default]{lato}
+        \RequirePackage{helvet}
+        \renewcommand{\familydefault}{\sfdefault}
+    \fi
+    \def\largetitlefont{\fontfamily{Roboto-LF}}
+    \def\largetitleseries{\fontseries{t}}
+    \def\largetitleshape{\fontshape{n}}
+    \def\largetitlestyle{\largetitlefont\largetitleseries\largetitleshape}
+    \def\titleshape{\fontshape{n}}
+    \if@roman
+        \renewcommand{\familydefault}{\rmdefault}
+        \def\titlefont{\fontfamily{fla}}
+        \def\sectitleshape{\fontshape{n}}
+        \def\sectitlestyle{\rmfamily\titleshape\bfseries}%{\familydefault\bfseries}
+        \def\chaptitlestyle{\rmfamily\titleshape}
+    \else
+        %        \renewcommand{\familydefault}{\tudsffamily}
+        %        \def\titleshape{\fontshape{n}}
+        \def\titlefont{\fontfamily{fla}}
+        \def\sectitlestyle{\sffamily\titleshape\bfseries}%        \def\sectitlestyle{\titleshape\bfseries}
+        \def\chaptitlestyle{\sffamily\titleshape}
+    \fi
+    %    \def\largetitleshape{\upshape}
+    %    \if@print
+    \def\titlestyle{\titlefont\titleshape}
+    %    \else
+    %        \def\titlestyle{\titlefont\titleshape}
+    %        \def\sectitlestyle{\sffamily\titleshape\bfseries}
+    %    \fi
+    %    \def\titlestyle{\titlefont\titleshape\bfseries}
+    %    \if@print
+    %        \def\headerstyle{\titlefont\titleshape\bfseries}
+    %    \else
+    \def\headerstyle{\titlefont}
+    %    \fi
+\else
+    %% Apart from Bookman Old Style and Arial, we use Courier New for monospace
+    %% and Cambria for math.
+    \RequirePackage{unicode-math}
+    \setmainfont[
+        Path = fonts/,
+        Extension = .ttf,
+        BoldFont = *-Bold,
+        ItalicFont = *-Italic,
+        BoldItalicFont = *-BoldItalic
+    ]{BookmanOldStyle}
+    \setsansfont[
+        Path = fonts/,
+        Extension = .ttf,
+        BoldFont = *_Bold,
+        ItalicFont = *_Italic,
+        BoldItalicFont = *_Bold_Italic]{Arial}
+    \setmonofont[
+        Path = fonts/,
+        Extension = .ttf,
+        UprightFont = *MT,
+        BoldFont = *-BoldMT,
+        ItalicFont = *-ItalicMT,
+        BoldItalicFont = *-BoldItalicMT
+    ]{CourierNewPS}
+    \setmathfont[
+        Path = fonts/,
+        Extension = .ttf
+    ]{CambriaMath}
+    %% The default style for text is Tahoma (sans-serif).
+    \renewcommand*\familydefault{\sfdefault}
+    %% The default style for titles is Bookman Old Style (serif). 
+    \def\titlefont{\tudsffamily}
+    \def\largetitlefont{\tudtitlefamily}
+    \def\titleshape{}
+    \def\largetitleshape{\titleshape}
+    \def\largetitleseries{}
+    \def\largetitlestyle{\largetitlefont\largetitleseries\largetitleshape}
+    \def\chaptitlefamily{\tudsffamily}
+    %    \if@print
+    %        \def\titlestyle{\titlefont\titleshape}
+    %%        \def\largetitlestyle{\largetitlefont\titleshape\bfseries}
+    %        \def\sectitlestyle{\tudsffamily\titleshape\bfseries}
+    %    \else
+    \def\titlestyle{\titlefont\titleshape}
+    %        \def\largetitlestyle{\largetitlefont\titleshape}
+    \def\sectitlestyle{\tudsffamily\titleshape\bfseries}
+    \def\chaptitlestyle{\chaptitlefamily}
+    %    \fi
+    \def\headerstyle{\titlestyle}
+\fi
+
+% Use roman (Georgia) in quote environment
+\renewenvironment{quote}
+{\list{}{\rightmargin\leftmargin}\tudrmfamily\selectfont%
+    \item\relax}
+{\endlist}

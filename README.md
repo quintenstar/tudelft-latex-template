@@ -12,7 +12,7 @@ An opinionated enhanced version of the TU Delft report LaTeX template.
 ## Description
 
 - Fix any potential bugs.
-- Make the template more customizable and covient to use, while staying true to the style guide.
+- Make the template more customizable and easy to use, while staying true to the style guide.
 - Promote best practices in LaTeX typesetting.
 
 ## Installation
@@ -77,9 +77,11 @@ xelatex cover
 
 Or simply with the `XeLaTeX` option in TeXworks or an equivalent program.
 
+## Build
+
 ## Changelog
 
-### Version 1.0
+### Version 0.1.0
 
 - Fixed a few small bugs and removed obsolete packages.
 - Added the option to compile with LuaLaTeX.

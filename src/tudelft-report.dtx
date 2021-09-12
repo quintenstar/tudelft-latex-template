@@ -1,0 +1,133 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{tudelft-report}[2021/09/12 v0.1.0 opionated and enhanced TU Delft thesis class]
+
+\newif\if@dutch
+\newif\if@english
+\newif\if@nativefonts
+\newif\if@print
+\newif\if@roman
+\@romantrue
+%\newif\if@whitetitle
+% \newif\if@whitelogo
+\DeclareOption{dutch}{\@dutchtrue\@englishfalse}
+\DeclareOption{roman}{\@romantrue}
+\DeclareOption{noroman}{\@romanfalse}
+\DeclareOption{english}{\@dutchfalse\@englishtrue}
+\DeclareOption{nativefonts}{\@nativefontstrue}
+\DeclareOption{print}{\@printtrue}
+%\DeclareOption{whitetitle}{\@whitetitletrue}
+% \DeclareOption{whitelogo}{\@whitelogotrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ExecuteOptions{english}
+\ProcessOptions\relax
+
+\LoadClass[10pt]{book}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
+%% English is the default language, but this can be changed to Dutch by
+%% specifying the 'dutch' option to the document class.
+\if@dutch
+    \RequirePackage[dutch]{babel}
+\else
+    %% Even for English reports, some sections might be in Dutch, for example on
+    %% the title page.
+    \RequirePackage[dutch,english]{babel}
+\fi
+\RequirePackage{csquotes} % Recommended with babel
+
+\RequirePackage[nooneline,footnotesize]{caption}
+\RequirePackage{fancyhdr}
+\RequirePackage[flushmargin,hang]{footmisc}
+
+% LuaLaTeX fix
+\RequirePackage{iftex}
+
+\iftutex
+    \ifxetex
+        \RequirePackage[xetex]{geometry}
+        \RequirePackage[xetex]{graphicx}
+        \RequirePackage[xetex]{hyperref}
+    \fi
+
+    \ifluatex
+        \RequirePackage[luatex]{geometry}
+        \RequirePackage[luatex]{graphicx}
+        \RequirePackage[luatex]{hyperref}
+    \fi
+
+    \RequirePackage{fontspec}
+    % \RequirePackage{xltxtra} obsolete fontspec is enough
+    \defaultfontfeatures{Ligatures=TeX}
+\else
+    \ifpdf
+        \RequirePackage[pdftex]{geometry}
+        \RequirePackage[pdftex]{graphicx}
+        \RequirePackage[pdftex]{hyperref}
+    \else
+        \RequirePackage[dvips]{geometry}
+        \RequirePackage[dvips]{graphicx}
+        \RequirePackage[hypertex]{hyperref}
+    \fi
+\fi
+
+
+% microtype
+\ifxetex  % chktex 1
+\else % Only use with LuaLaTeX or PdfLaTeX
+    \RequirePackage[babel=true]{microtype}
+\fi
+
+\RequirePackage{metalogo}
+\RequirePackage{tikz}
+\RequirePackage[noindentafter]{titlesec}
+\RequirePackage{titletoc}
+\RequirePackage{xcolor}
+\RequirePackage{xkeyval}
+\RequirePackage[export]{adjustbox}
+\def\@largetitlesize{96pt}
+
+\RequirePackage{changes}
+
+
+% Add nomenclature
+\RequirePackage{nomencl}
+\RequirePackage{float}
+
+\RequirePackage{siunitx}
+\RequirePackage{cleveref}
+\RequirePackage{url}
+
+\RequirePackage{booktabs}
+
+\RequirePackage[ruled]{algorithm2e}
+
+
+%% We use A4 paper with slightly smaller margins than the default (scale = 0.7).
+\geometry{a4paper,hscale=0.75,vscale=0.8}
+
+%% Redefine the title command to accept an optional subtitle.
+\renewcommand*\title[2][tudelft-white]{%
+    %    \def\@subtitle{#1}%
+    \def\@titlecolor{#1}%
+    \def\@title{#2}%
+    %% Add the title to the PDF meta data.
+    \hypersetup{pdftitle=#2}%
+}
+\newcommand*\subtitle[2][tudelft-white]{%
+    %    \def\@subtitle{#1}%
+    \def\@subtitlecolor{#1}%
+    \def\@subtitle{#2}%
+    %% Add the title to the PDF meta data.
+    %    \hypersetup{pdftitle=#3}%
+}
+%% Redefine the author command to add the name to the PDF meta data.
+\renewcommand*\author[2][tudelft-white]{%
+    \def\@authorcolor{#1}%
+    \def\@author{#2}%
+    \hypersetup{pdfauthor=#2}%
+}
+%% The affiliation is shown in the blue box on the front cover.
+\newcommand*\affiliation[2][tudelft-white]{\def\@afilcolor{#1}%
+    \def\@affiliation{#2}}

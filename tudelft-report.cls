@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{tudelft-report}[2021/09/10 v1.0 opionated and enhanced TU Delft thesis class]
+\ProvidesClass{tudelft-report}[2021/09/12 v0.1.0 opionated and enhanced TU Delft thesis class]
 
 \newif\if@dutch
 \newif\if@english
@@ -43,21 +43,8 @@
 
 % LuaLaTeX fix
 \RequirePackage{iftex}
-\newif\ifxetexorluatex
-\ifxetex
-  \xetexorluatextrue
-\else
-  \ifluatex
-    \xetexorluatextrue
-  \else
-    \xetexorluatexfalse
-  \fi
-\fi
 
-%% legacy packages --> caused problems
-% \RequirePackage{ifpdf}
-% \RequirePackage{ifxetex}
-\ifxetexorluatex
+\iftutex
     \ifxetex
         \RequirePackage[xetex]{geometry}
         \RequirePackage[xetex]{graphicx}
@@ -117,7 +104,7 @@
 \RequirePackage[ruled]{algorithm2e}
 
 %% Font loading
-\ifxetexorluatex
+\iftutex
     %% If the document is compiled with XeLaTeX, we load the TU Delft house
     %% style fonts: Bookman Old Style (serif) for titles and Arial (sans-serif)
     %% for text. Even if the nativefonts option was specified, we need these
@@ -271,21 +258,6 @@
 \definecolor{tudelft-yellow}{cmyk}{0.05,0.26,0.84,0}
 \definecolor{tudelft-red}{cmyk}{0.16,0.92,0.84,0}
 \definecolor{tudelft-orange}{cmyk}{0,0.66,0.74,0}
-
-
-%% Old defined tu colors
-% \definecolor{tudelft-sea-green}{cmyk}{0.54,0,0.32,0}
-% \definecolor{tudelft-green}{cmyk}{1,0.15,0.4,0}
-% \definecolor{tudelft-dark-blue}{cmyk}{1,0.66,0,0.4}
-% \definecolor{tudelft-purple}{cmyk}{0.98,1,0,0.35}
-% \definecolor{tudelft-turquoise}{cmyk}{0.82,0,0.21,0.08}
-% \definecolor{tudelft-sky-blue}{cmyk}{0.45,0,0.06,0.06}
-% \definecolor{tudelft-lavendel}{cmyk}{0.45,0.2,0,0.07}
-% \definecolor{tudelft-orange}{cmyk}{0.02,0.56,0.84,0}
-% \definecolor{tudelft-warm-purple}{cmyk}{0.58,1,0,0.02}
-% \definecolor{tudelft-fuchsia}{cmyk}{0.19,1,0,0.19}
-% \definecolor{tudelft-bright-green}{cmyk}{0.36,0,1,0}
-% \definecolor{tudelft-yellow}{cmyk}{0.02,0,0.54,0}
 
 \def\@pagecolor{tudelft-cyan}
 %\if@whitetitle

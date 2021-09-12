@@ -1,0 +1,262 @@
+%% The coverimage command is used to specify the filename of the optional cover
+%% image.
+\newcommand*\coverimage[1]{\def\@cover@image{#1}}
+%% The covertext command can be used to specify the text printed on the back
+%% cover. This text is inserted in a minipage environment and can therefore
+%% include line breaks.
+\newcommand\covertext[2][tudelft-white]{%
+    %    \def\@subtitle{#1}%
+    \def\@covertextcolor{#1}%
+    \def\@cover@text{#2}}
+
+%% The cover image is scaled to fill the width of the front cover.
+\newlength\@cover@imagewidth
+%% The width of the spine if a back cover is present.
+\newlength\@cover@spinewidth
+\setlength\@cover@spinewidth{0.375in}
+%% Width and height of the boxes on the front and back cover.
+\newlength\@cover@frontboxwidth
+\setlength\@cover@frontboxwidth{4.375in}
+\newlength\@cover@frontboxheight
+\setlength\@cover@frontboxheight{2.1875in}
+\newlength\@cover@fronttextwidth
+\newlength\@cover@fronttextheight
+\newlength\@cover@splitboxwidth
+\setlength\@cover@splitboxwidth{6.375in}
+\newlength\@cover@splitboxheight
+\setlength\@cover@splitboxheight{0.5\paperheight}
+\newlength\@cover@splitboxtextwidth
+\newlength\@cover@splittextheight
+%% Position on the front cover where the corner of both boxes meet.
+\newlength\@cover@x
+\setlength\@cover@x{0.8125in}
+\newlength\@cover@y
+\setlength\@cover@y{3in}
+\newlength\@cover@ax
+\setlength\@cover@ax{0.6125in}
+\newlength\@cover@ay
+\setlength\@cover@ay{5in}
+%% The margin around text boxes.
+\newlength\@cover@margin
+\setlength\@cover@margin{12pt}
+
+%% Define the options for the makecover command.
+\define@boolkey{cover}{back}[true]{}
+\define@boolkey{cover}{split}[true]{}
+\define@boolkey{cover}{nospine}[true]{}
+\define@boolkey{cover}{frontbottom}[true]{}
+\define@boolkey{cover}{whitelogo}[true]{}
+\define@key{cover}{spinewidth}{\setlength\@cover@spinewidth{#1}}
+\define@key{cover}{frontboxwidth}{\setlength\@cover@frontboxwidth{#1}}
+\define@key{cover}{frontboxheight}{\setlength\@cover@frontboxheight{#1}}
+%\define@key{cover}{backboxwidth}{\setlength\@cover@backboxwidth{#1}}
+%\define@key{cover}{backboxheight}{\setlength\@cover@backboxheight{#1}}
+\define@key{cover}{x}{\setlength\@cover@x{#1}}
+\define@key{cover}{y}{\setlength\@cover@y{#1}}
+\define@key{cover}{ax}{\setlength\@cover@ax{#1}}
+\define@key{cover}{ay}{\setlength\@cover@ay{#1}}
+\define@key{cover}{margin}{\setlength\@cover@margin{#1}}
+\newcommand\titleoffsetx[1]{\def\@cover@x{#1}}
+\newcommand\titleoffsety[1]{\def\@cover@y{#1}}
+\newcommand\afiloffsetx[1]{\def\@cover@ax{#1}}
+\newcommand\afiloffsety[1]{\def\@cover@ay{#1}}
+\newcommand\setpagecolor[1]{\def\@pagecolor{#1}}
+
+\newcommand*\makecover[1][]{
+    \setkeys{cover}{#1}
+    %% Create a \@pagecolor empty page without margins.
+    \clearpage
+    \newgeometry{margin=0pt}
+    \pagecolor{\@pagecolor}
+    \thispagestyle{empty}
+    %% We need the this to perform coordinate calculations in TikZ.
+    \usetikzlibrary{calc}
+    \begin{tikzpicture}[remember picture,overlay]
+        \ifKV@cover@nospine
+            \setlength\@cover@spinewidth{0pt}
+        \fi
+        %% If a back cover is present, stretch the cover image to extend onto
+        %% the spine.
+        \ifKV@cover@back
+            \setlength\@cover@imagewidth{0.5\paperwidth}
+            \addtolength\@cover@imagewidth{0.5\@cover@spinewidth}
+        \else
+            \setlength\@cover@imagewidth{\paperwidth}
+        \fi
+        %% If a cover image was specified, attach it to the top right of the
+        %% front cover.
+        \ifx\@cover@image\undefined\else
+            \ifKV@cover@back
+            {\ifKV@cover@split
+                    \node[anchor=north west,inner sep=0pt] at (current page.center) {
+                        \includegraphics[width=\@cover@imagewidth]{\@cover@image}};
+                \else
+                    \node at (current page.north east)[anchor=north east,inner sep=0pt]{
+                        \includegraphics[width=\@cover@imagewidth]{\@cover@image}};
+                \fi}
+            \else
+            {\ifKV@cover@split
+                    \node[anchor=north west,inner sep=0pt] at (current page.west) {
+                        \includegraphics[width=\@cover@imagewidth]{\@cover@image}};
+                \else
+                    \node at (current page.north east)[anchor=north east,inner sep=0pt]{
+                        \includegraphics[width=\@cover@imagewidth]{\@cover@image}};
+                \fi}
+        \fi
+        \fi
+        \ifKV@cover@whitelogo
+            \ifKV@cover@back
+                \node at (current page.south west)[anchor=south west,inner sep=20pt]{
+                    \includegraphics{cover/logo_white}
+                };
+                \node at (current page.south east)[anchor=south east,inner sep=20pt]{
+                    \includegraphics{cover/logo_white}
+                };
+            \else
+                \node at (current page.south west)[anchor=south west,inner sep=20pt]{
+                    \includegraphics{cover/logo_white}
+                };
+            \fi
+        \else
+            \ifKV@cover@back
+                \node at (current page.south west)[anchor=south west,inner sep=20pt]{
+                    \includegraphics{cover/logo_black}
+                };
+                \node at (current page.south east)[anchor=south east,inner sep=20pt]{
+                    \includegraphics{cover/logo_black}
+                };
+            \else
+                \node at (current page.south west)[anchor=south west,inner sep=20pt]{
+                    \includegraphics{cover/logo_black}
+                };
+            \fi
+        \fi
+        %% Calculate the coordinate of the top left corner of the front cover.
+        \ifKV@cover@back
+            \coordinate (top left) at ($(current page.north)+(0.5\@cover@spinewidth,0pt)$);
+        \else
+            \coordinate (top left) at (current page.north west);
+        \fi
+        \ifKV@cover@back
+            \coordinate (bottom left) at ($(current page.south)+(0.5\@cover@spinewidth,0pt)$);
+        \else
+            \coordinate (bottom left) at (current page.south west);
+        \fi
+        \ifKV@cover@back\ifKV@cover@nospine\else
+                %% If a back cover is present, calculate the coordinates of the
+                %% spine box.
+                \coordinate (spine top left) at ($(top left)-(\@cover@spinewidth,0pt)$);
+                \coordinate (spine bottom right) at ($(top left)+(0pt,-\@cover@y)$);
+                \ifKV@cover@frontbottom
+                    \coordinate (spine bottom right) at ($(spine bottom right)+(0pt,\@cover@backboxheight)$);
+                \fi
+                \coordinate (spine bottom center) at ($(spine bottom right)+(-0.5\@cover@spinewidth,0pt)$);
+                %% Extend the spine box by 1pt to the left to ensure it completely
+                %% covers the cover image.
+                \coordinate (spine top left) at ($(spine top left)-(1pt,0pt)$);
+                %% Draw a black box on the spine.
+                \fill[fill=tudelft-black](spine top left) rectangle (spine bottom right);
+                %% Print the title on the center right of the spine box.
+                \node at (spine bottom center)[rotate=-90,anchor=east,inner sep=\@cover@margin]{
+                    \tudsffamily\color{tudelft-white}\LARGE\@title
+                };
+            \fi\fi
+        %% Calculate the coordinate of the corner where the front and back boxes
+        %% meet.
+        \ifKV@cover@split
+            \setlength\@cover@fronttextwidth{\@cover@splitboxwidth}
+            \addtolength\@cover@fronttextwidth{-2\@cover@margin}
+            \setlength\@cover@fronttextheight{\@cover@splitboxheight}
+            \addtolength\@cover@fronttextheight{-4\@cover@margin}
+            \coordinate (tcorner) at ($(top left)+(2\@cover@margin,-2\@cover@margin)$);
+            \coordinate (front top left) at (tcorner);
+            %%          \coordinate (back top left) at ($(tcorner)+(-\@cover@backboxwidth,\@cover@backboxheight)$);     
+            \node at (front top left)[anchor=north west,inner sep=\@cover@margin]{
+                \begin{minipage}[t][\@cover@fronttextheight]{\@cover@fronttextwidth}
+                    %% Print the title and optional subtitle at the top in white.
+                    {\titlefont\color{\@titlecolor}\fontsize{58}{58}\selectfont\@title}
+                    \ifx\@subtitle\undefined\else
+                        %                     \\[3mm]
+                        \vfill
+
+                        {\titlefont\color{\@subtitlecolor}\fontsize{52}{52}\selectfont\@subtitle}
+                    \fi
+                    %% Print the author.
+                    \vfill
+
+                    {\titlefont\color{\@authorcolor}\fontsize{52}{52}\selectfont\@author}
+                    \ifx\@cover@text\undefined\else
+                        \vfill
+
+                        {\titlefont\color{\@covertextcolor}\fontsize{18}{18}\selectfont\@cover@text}
+                    \fi
+                \end{minipage}
+            };
+        \else
+            \coordinate (tcorner) at ($(top left)+(\@cover@x,-\@cover@y)$);
+            \coordinate (acorner) at ($(top left)+(\@cover@ax,-\@cover@ay)$);
+            %        \coordinate (lcorner) at ($(bottom left)+(2cm,2cm)$);
+            %% Calculate the top left and bottom right coordinates of the front and
+            %% back boxes.
+            \ifKV@cover@frontbottom
+                \coordinate (front top left) at (tcorner);
+                \coordinate (back top left) at ($(tcorner)+(-\@cover@splitboxwidth,\@cover@splitboxheight)$);
+            \else
+                \coordinate (front top left) at ($(tcorner)+(0pt,\@cover@frontboxheight)$);
+                \coordinate (back top left) at ($(tcorner)+(-\@cover@splitboxwidth,0pt)$);
+            \fi
+            \coordinate (front bottom right) at ($(front top left)+(\@cover@frontboxwidth,-\@cover@frontboxheight)$);
+            \coordinate (back bottom right) at ($(back top left)+(\@cover@splitboxwidth,-\@cover@splitboxheight)$);
+            %% Draw the front box in black.
+            %        \fill[fill=tudelft-black](front top left) rectangle (front bottom right);
+            %% Calculate the width and height of the front text box.
+            \setlength\@cover@fronttextwidth{\@cover@frontboxwidth}
+            \addtolength\@cover@fronttextwidth{-2\@cover@margin}
+            \setlength\@cover@fronttextheight{\@cover@frontboxheight}
+            \addtolength\@cover@fronttextheight{-2\@cover@margin}
+            %% Create the front text box.
+            \node at (front top left)[anchor=north west,inner sep=\@cover@margin]{
+                \begin{minipage}[t][\@cover@fronttextheight]{\@cover@fronttextwidth}
+                    %% Print the title and optional subtitle at the top in white.
+                    {\largetitlestyle\color{\@titlecolor}\fontsize{96}{96}\selectfont\@title}
+                    %                {\tudsffamily\color{\@titlecolor}\fontsize{96}{96}\selectfont\@title}
+                    \ifx\@subtitle\undefined\else
+                        \\[3mm]
+                        {\tudsffamily\color{\@subtitlecolor}\fontsize{22}{32}\selectfont\@subtitle}
+                    \fi
+                    %% Print the author at the bottom in cyan.
+                    \vfill
+                    %                {\tudtitlefamily\color{\@authorcolor}\fontsize{26}{26}\selectfont\@author}
+                    {\largetitlestyle\color{\@authorcolor}\fontsize{26}{26}\selectfont\@author}
+                \end{minipage}
+            };
+            %% Draw the back box in cyan.
+            %        \fill[fill=tudelft-cyan](back top left) rectangle (back bottom right);
+            %% Print the affiliation.
+            \ifx\@affiliation\undefined\else
+                %            \node at (back bottom right)[rotate=90,anchor=south west,inner sep=\@cover@margin]{
+                \node at (acorner)[rotate=90,anchor=south west,inner sep=\@cover@margin]{
+                    \tudsffamily\color{\@afilcolor}\@affiliation
+                };
+            \fi
+            %          \ifKV@cover@back\ifx\@cover@text\undefined\else
+            %              %% Calculate the width and height of the back text box.
+            %              \setlength\@cover@backtextwidth{\@cover@backboxwidth}
+            %              \addtolength\@cover@backtextwidth{-2\@cover@margin}
+            %              \setlength\@cover@backtextheight{\@cover@backboxheight}
+            %              \addtolength\@cover@backtextheight{-2\@cover@margin}
+            %              %% Create the back text box.
+            %              \node at (back top left)[anchor=north west,inner sep=\@cover@margin]{
+            %                  \begin{minipage}[t][\@cover@backtextheight]{\@cover@backtextwidth}
+            %                      \tudsffamily\color{tudelft-white}\@cover@text
+            %                  \end{minipage}
+            %              };
+            %          \fi
+
+        \fi
+    \end{tikzpicture}
+    %% Restore the margins and turn the page white again.
+    \restoregeometry
+    \pagecolor{white}
+}
+
