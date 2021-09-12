@@ -3,27 +3,15 @@
     [2015/04/16 (Bob Tennent)  Supports Roboto fonts for all LaTeX engines.]
 
 \RequirePackage{xkeyval,textcomp}
-
-
-% LuaLaTeX fix
 \RequirePackage{iftex}
-\newif\ifxetexorluatex
-\ifxetex
-  \xetexorluatextrue
-\else
-  \ifluatex
-    \xetexorluatextrue
-  \else
-    \xetexorluatexfalse
-  \fi
-\fi
 
 \newif\ifroboto@otf 
-\ifxetexorluatextrue
+
+\iftutex
   \roboto@otftrue
 \else  % [pdf]LaTeX
   \roboto@otffalse
-\fi\fi
+\fi
 
 \newif\ifroboto@lining \roboto@liningfalse
 \newif\ifroboto@tabular \roboto@tabularfalse
@@ -73,9 +61,7 @@
   \def\roboto@regstyle{Regular}
   \ifroboto@light\def\roboto@regstyle{Light}\fi
   \ifroboto@thin\def\roboto@regstyle{Thin}\fi
-
 \else % type1
-
   \def\bfseries@sf{b}
   \ifroboto@medium\def\bfseries@sf{mb}\fi
   \ifroboto@black\def\bfseries@sf{k}\fi
@@ -84,7 +70,6 @@
      \ifroboto@slab\def\mdseries@rm{t}\fi\fi
   \ifroboto@light\def\mdseries@sf{l}
      \ifroboto@slab\def\mdseries@rm{l}\fi\fi
-
 \fi
 
 \ifroboto@otf
@@ -119,11 +104,15 @@
 \fi
 
 \ifroboto@otf
-  \ifxetex\XeTeXtracingfonts=1\fi
+  \ifxetex
+    \XeTeXtracingfonts=1
+  \fi
+
   \defaultfontfeatures{
         Ligatures = TeX ,
         Scale     = \Roboto@scale ,
         Extension = .ttf }
+
   \ifroboto@condensed
     \setsansfont
         [ Numbers = {\roboto@figurealign,\roboto@figurestyle},
@@ -141,15 +130,21 @@
           BoldItalicFont = *-\roboto@boldstyle Italic ]
         {Roboto}
   \fi
+
   % grab current family in case of subsequent change:
   \let\robotofamily\sfdefault  
+
   \ifroboto@slab
     \setmainfont
         [ UprightFont    = *-\roboto@regstyle ,
           BoldFont       = *-Bold ]
         {RobotoSlab}
   \fi
-  \ifroboto@default\renewcommand*\familydefault{\robotofamily}\fi
+
+  \ifroboto@default
+    \renewcommand*\familydefault{\robotofamily}
+  \fi
+  
   \newfontfamily\roboto
         [ Numbers = {\roboto@figurealign,\roboto@figurestyle},
           UprightFont    = *-\roboto@regstyle ,
@@ -184,7 +179,6 @@
       {Roboto}
   \DeclareTextFontCommand{\oldstylenums}{\robotoOsF}
   \DeclareTextFontCommand{\liningnums}{\robotoLF}
-
 \else % type1
   \def\robotofamily{Roboto-\roboto@figurealign\roboto@figurestyle}
   \def\robotocondensedfamily{RobotoCondensed-\roboto@figurealign\roboto@figurestyle}
@@ -199,7 +193,6 @@
 
   \DeclareTextFontCommand{\oldstylenums}{\fontfamily{Roboto-\roboto@figurealign OsF}\selectfont}
   \DeclareTextFontCommand{\liningnums}{\fontfamily{Roboto-\roboto@figurealign LF}\selectfont}
-
 \fi
 
 \ifroboto@otf
