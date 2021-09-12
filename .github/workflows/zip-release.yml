@@ -20,6 +20,9 @@ jobs:
             *.github/*
             .vscode/*
             /*design/*
+            /*src/*
+            /*build/*
+            build.lua
             .gitignore
             LICENSE
             README.md

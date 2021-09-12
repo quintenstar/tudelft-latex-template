@@ -1,11 +1,19 @@
 % !TeX program = lualatex
 \documentclass[]{tudelft-report}
 
-%\usepackage{biblatex}
-\usepackage[backend=biber, style=citations/aiaa]{biblatex}
+\usepackage[backend=biber]{biblatex}
+%\usepackage[backend=biber, style=citations/aiaa]{biblatex}
 \addbibresource{report.bib}
 
+
+%% This will add the units
+%----------------------------------------------
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+%----------------------------------------------
+
 \makenomenclature{} % chktex 1
+
 
 \begin{document}
 
@@ -64,7 +72,7 @@
 
 \listoffigures
 \listoftables
-\printnomenclature
+\printnomenclature{}
 
 
 %% Use Arabic numerals for the page numbers of the chapters.
@@ -83,6 +91,6 @@
 
 \include{appendices/appendix-a}
 
-\printbibliography{}
+\printbibliography[heading=bibintoc]{}
 
 \end{document}

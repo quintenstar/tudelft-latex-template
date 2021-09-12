@@ -79,6 +79,10 @@ Or simply with the `XeLaTeX` option in TeXworks or an equivalent program.
 
 ## Build
 
+```console
+l3build unpack
+```
+
 ## Changelog
 
 ### Version 0.1.0
@@ -90,6 +94,8 @@ Or simply with the `XeLaTeX` option in TeXworks or an equivalent program.
 - Added additional (recommended) packages in the class file.
 - Added the AIAA citation style for Aerospace students.
 - Added a GitHub social repo card (and template) to the project.
+- Added build.lua to split up the creation of the tudelft-report.cls file.
+- Added nomenclature, list of figures, list of tables
 - Changed the folder/project layout.
 
 ## Attribution

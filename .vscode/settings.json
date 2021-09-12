@@ -138,7 +138,9 @@
     "**/*.synctex(busy)",
     "**/*.synctex.gz",
     "**/*.synctex.gz(busy)",
-    "**/*.toc"
+    "**/*.toc",
+    "**/*.nlo",
+    "**/*.nls"
   ],
   "files.exclude": {
     "**/*.acn": true,

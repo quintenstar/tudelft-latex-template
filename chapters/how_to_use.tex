@@ -1,3 +1,4 @@
+% !TeX root = report.tex
 \chapter{How to use}
 
 This document is intended to be both an example of the TU Delft \LaTeX{} template for reports and theses, as well as a short introduction to its use. It is not intended to be a general introduction to \LaTeX{} itself,\footnote{We recommend \url{http://en.wikibooks.org/wiki/LaTeX} as a reference and a starting point for new users.} and we will assume the reader to be familiar with the basics of creating and compiling documents.
@@ -70,9 +71,9 @@ To get numbered references just use
 \addbibresource{report.bib}
 \end{verbatim}
 
-To give some examples we cite an article: \cite{Einstein1906},
-a book: \cite{MR1039321}, another article: \cite{MR3860876},
-and a book with more than one editor: \cite{MR3204729}.
+To give some examples we cite an article:~\cite{Einstein1906},
+a book:~\cite{MR1039321}, another article:~\cite{MR3860876},
+and a book with more than one editor:~\cite{MR3204729}.
 
 \section{Cover and Title Page}
 
@@ -91,7 +92,7 @@ Before generating the cover, you need to provide the information to put on it. T
     \item\verb|\title[Optional Color]{Subtitle}| \\
     This command is used to provide a subtitle for the document. If you use a title page (see below), this information will be used there as well.
     It possible to adjust the print color in order to have
-    sufficient contrast between the text and the background -- the optional color argument is used for this.
+    sufficient contrast between the text and the background --- the optional color argument is used for this.
     \item\verb|\author{J.\ Random Author}| \\
     This command specifies the author. The default color is \texttt{tudelft-white}, but this may be adjusted in the same way as the titles.
     \item\verb|\affiliation{Technische Universiteit Delft}| \\
@@ -197,6 +198,44 @@ Apart from these three, the house style defines the accent colors:
 \end{itemize}
 
 
+See \cref{fig:example} below:
+
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{design/GitHub_repo_card.png}
+    \includegraphics[width=\textwidth]{GitHub_repo_card.png}
+    \caption{This an example of a figure}
+    \label{fig:example}
 \end{figure}
+
+
+See \cref{tab:example} below:
+
+\begin{table}[h]
+    \caption{This an example of a Table}
+    \label{tab:example}
+    \centering
+    \begin{tabular}{@{}lllll@{}}
+        \toprule
+        \multirow{2}{*}[-1em]{Models} & \multicolumn{3}{c}{Metric 1} & Metric 2                  \\
+        \addlinespace[10pt]
+        \cmidrule(lr){2-4} \cmidrule(lr){5-5}                                                    \\
+        {}                            & precision                    & recall   & F-score & R@10 \\
+        \midrule
+        model 1                       & 0.67                         & 0.8      & 0.729   & 0.75 \\
+        model 2                       & 0.8                          & 0.9      & 0.847   & 0.85 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+Nomenclature:
+
+\nomenclature[A, 02]{\(c\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?c}
+{Speed of light in a vacuum}
+\nomunit{\SI{299792458}{\meter\per\second}}}
+\nomenclature[A, 03]{\(h\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?h}
+{Planck constant}
+\nomunit{\SI[group-digits=false]{6.62607015e-34}{\joule\per\hertz}}}
+\nomenclature[A, 01]{\(G\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?bg}
+{Gravitational constant} 
+\nomunit{\SI[group-digits=false]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}}}
+Typesetting units and numbers:

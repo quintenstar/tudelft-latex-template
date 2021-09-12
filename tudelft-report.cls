@@ -100,6 +100,7 @@
 \RequirePackage{url}
 
 \RequirePackage{booktabs}
+\RequirePackage{multirow}
 
 \RequirePackage[ruled]{algorithm2e}
 
