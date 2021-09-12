@@ -58,7 +58,6 @@
     \fi
 
     \RequirePackage{fontspec}
-    % \RequirePackage{xltxtra} obsolete fontspec is enough
     \defaultfontfeatures{Ligatures=TeX}
 \else
     \ifpdf
@@ -103,32 +102,3 @@
 \RequirePackage{multirow}
 
 \RequirePackage[ruled]{algorithm2e}
-
-
-%% We use A4 paper with slightly smaller margins than the default (scale = 0.7).
-\geometry{a4paper,hscale=0.75,vscale=0.8}
-
-%% Redefine the title command to accept an optional subtitle.
-\renewcommand*\title[2][tudelft-white]{%
-    %    \def\@subtitle{#1}%
-    \def\@titlecolor{#1}%
-    \def\@title{#2}%
-    %% Add the title to the PDF meta data.
-    \hypersetup{pdftitle=#2}%
-}
-\newcommand*\subtitle[2][tudelft-white]{%
-    %    \def\@subtitle{#1}%
-    \def\@subtitlecolor{#1}%
-    \def\@subtitle{#2}%
-    %% Add the title to the PDF meta data.
-    %    \hypersetup{pdftitle=#3}%
-}
-%% Redefine the author command to add the name to the PDF meta data.
-\renewcommand*\author[2][tudelft-white]{%
-    \def\@authorcolor{#1}%
-    \def\@author{#2}%
-    \hypersetup{pdfauthor=#2}%
-}
-%% The affiliation is shown in the blue box on the front cover.
-\newcommand*\affiliation[2][tudelft-white]{\def\@afilcolor{#1}%
-    \def\@affiliation{#2}}

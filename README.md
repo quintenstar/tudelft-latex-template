@@ -1,9 +1,9 @@
 <div align='center'>
 
-![TU Delft LaTeX template](design/GitHub_repo_card.png)
+![TU Delft LaTeX template](GitHub_repo_card.png)
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/quintenstar/tudelft-latex-template?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/quintenstar/tudelft-latex-template?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/quintenstar/tudelft-latex-template?label=license&style=for-the-badge)
 
 An opinionated enhanced version of the TU Delft report LaTeX template.
 
@@ -11,8 +11,13 @@ An opinionated enhanced version of the TU Delft report LaTeX template.
 
 ## Description
 
+The purpose of this template is to provide a better TU Delft LaTeX template. The main features in comparison to the original are:
+
 - Fix any potential bugs.
-- Make the template more customizable and easy to use, while staying true to the style guide.
+- Make the template more customizable and easier to use, while staying true to the style guide.
+- More stuff working right out of the box.
+- Keep it a drop-in replacement from the original tudelft-report.cls file.
+- Updated to use more modern LaTeX.
 - Promote best practices in LaTeX typesetting.
 
 ## Installation

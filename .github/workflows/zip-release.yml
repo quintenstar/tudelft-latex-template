@@ -18,7 +18,7 @@ jobs:
           exclusions: >
             *.git/*
             *.github/*
-            .vscode/*
+            /*.vscode/*
             /*design/*
             /*src/*
             /*build/*

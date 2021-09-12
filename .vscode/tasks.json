@@ -11,7 +11,7 @@
     {
       "label": "Build files",
       "type": "shell",
-      "command": "l3build unpack; copy /build/local/tudelft-report.cls ./"
+      "command": "l3build unpack; copy ./build/local/tudelft-report.cls ./"
     }
   ]
 }
