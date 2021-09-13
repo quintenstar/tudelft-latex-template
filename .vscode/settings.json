@@ -10,12 +10,18 @@
       "tools": ["latexmk"]
     },
     {
-      "name": "PDFlatex",
+      "name": "pdflatex",
       "tools": ["pdflatex"]
     },
     {
       "name": "pdflatex -> bibtex -> makeindex ->  pdflatex*2",
-      "tools": ["pdflatex", "bibtex", "makeindex", "pdflatex", "pdflatex"]
+      "tools": [
+        "pdflatex_fast",
+        "bibtex",
+        "makeindex",
+        "pdflatex_fast",
+        "pdflatex"
+      ]
     },
     {
       "name": "lualatex",
@@ -23,7 +29,13 @@
     },
     {
       "name": "lualatex -> biber -> makeindex -> lualatex*2",
-      "tools": ["lualatex", "biber", "makeindex", "lualatex", "lualatex"]
+      "tools": [
+        "lualatex_fast",
+        "biber",
+        "makeindex",
+        "lualatex_fast",
+        "lualatex"
+      ]
     },
     {
       "name": "xelatex",
@@ -31,20 +43,20 @@
     },
     {
       "name": "xelatex -> biber -> makeindex -> xelatex*2",
-      "tools": ["xelatex", "biber", "makeindex", "xelatex", "xelatex"]
-    },
-    {
-      "name": "makeindex",
-      "tools": ["makeindex"]
-    },
-    {
-      "name": "Biber",
-      "tools": ["biber"]
-    },
-    {
-      "name": "Bibtex",
-      "tools": ["bibtex"]
+      "tools": ["xelatex_fast", "biber", "makeindex", "xelatex_fast", "xelatex"]
     }
+    // {
+    //   "name": "makeindex",
+    //   "tools": ["makeindex"]
+    // },
+    // {
+    //   "name": "Biber",
+    //   "tools": ["biber"]
+    // },
+    // {
+    //   "name": "Bibtex",
+    //   "tools": ["bibtex"]
+    // }
   ],
   "latex-workshop.latex.tools": [
     {
@@ -72,6 +84,18 @@
       "env": {}
     },
     {
+      "name": "pdflatex_fast",
+      "command": "pdflatex",
+      "args": [
+        "-draftmode",
+        "-quiet",
+        // "-interaction=nonstopmode",
+        // "-file-line-error",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
       "name": "xelatex",
       "command": "xelatex",
       "args": [
@@ -84,6 +108,19 @@
       "env": {}
     },
     {
+      "name": "xelatex_fast",
+      "command": "xelatex",
+      "args": [
+        // "-synctex=1",
+        "-interaction=nonstopmode",
+        // "-file-line-error",
+        // "-recorder",
+        "-no-pdf",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
       "name": "lualatex",
       "command": "lualatex",
       "args": [
@@ -91,6 +128,18 @@
         "-interaction=nonstopmode",
         "-file-line-error",
         "-recorder",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "lualatex_fast",
+      "command": "lualatex",
+      "args": [
+        "-interaction=nonstopmode",
+        // "-file-line-error",
+        // "-recorder",
+        "--draftmode",
         "%DOC%"
       ],
       "env": {}
