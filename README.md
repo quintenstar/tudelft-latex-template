@@ -88,21 +88,6 @@ Or simply with the `XeLaTeX` option in TeXworks or an equivalent program.
 l3build unpack
 ```
 
-## Changelog
-
-### Version 0.1.0
-
-- Fixed a few small bugs and removed obsolete packages.
-- Added the option to compile with LuaLaTeX.
-- Changed the colors to match the current [TU Delft style guide](https://www.tudelft.nl/huisstijl/kleuren).
-- Added Affinity palette files.
-- Added additional (recommended) packages in the class file.
-- Added the AIAA citation style for Aerospace students.
-- Added a GitHub social repo card (and template) to the project.
-- Added build.lua to split up the creation of the tudelft-report.cls file.
-- Added nomenclature, list of figures, list of tables
-- Changed the folder/project layout.
-
 ## Attribution
 
 Based on the [Overleaf TU Delft LaTeX template by K.P. Hart](https://www.overleaf.com/latex/templates/tud-report/qrntwbrqpckw) released under the Creative Commons CC BY 4.0 license.
