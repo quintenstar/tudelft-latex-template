@@ -1,4 +1,8 @@
 {
+  "files.associations": {
+    "*.ins": "latex-expl3",
+    "*.dtx": "latex-expl3"
+  },
   "latex-workshop.showContextMenu": true, // right click menu
   "latex-workshop.intellisense.package.enabled": true, // automatically completes the command or package according to the loaded package
   "latex-workshop.latex.autoBuild.run": "onSave", // disable automatic build when saving files
